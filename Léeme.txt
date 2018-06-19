@@ -1,0 +1,7 @@
+Para correr la API abra la consola de comandos desde la ruta /src
+
+y ejecute el siguiente comando:
+
+node app.js
+
+en la consola debera aparecer el numero del puerto al que se ha conectado.
