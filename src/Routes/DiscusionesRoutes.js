@@ -35,5 +35,48 @@ module.exports = function(app){
                 });
             }
         })
-    })
+    });
+
+    app.put('/discusiones/:id', (req, res) => {
+        const discusionData = {
+            IdDiscusion: req.params.id,
+            Titulo: req.body.Titulo,
+            Descripcion: req.body.Descripcion,
+            Conclusion: req.body.Conclusion,
+            Estado: req.body.Estado,
+            ModifyBy: req.body.IdVecino,
+            DateModification: req.body.DateModification
+        };
+
+        discusiones.updateDiscusion(discusionData, function (err, data) {
+            if (data && data.msg) {
+                res.status(200).json({
+                    success: true,
+                    data: data
+                });
+            } else {
+                res.status(500).json({
+                    success: false,
+                    msg: 'Error'
+                });
+            }
+        });
+    });
+
+    app.delete('/discusiones/:id', (req, res) => {
+        var id = req.params.id;
+        discusiones.deleteDiscusion(id, (err, data) =>  {
+            if (data && (data.msg === 'deleted' || data.msg == 'not Exists')) {
+                res.json({
+                    success: 'true',
+                    data: data
+                });
+            } else {
+                res.status(500).json({
+                    msg: 'Error',
+                    data: err
+                });
+            }
+        });
+    });
 }

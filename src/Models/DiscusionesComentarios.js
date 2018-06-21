@@ -30,4 +30,58 @@ comentariosModel.insertComentario = (comentario, callback) => {
     }
 };
 
+comentariosModel.updateComentario = (comentarioData, callback) => {
+    if (connection) {
+      const sql = `
+        UPDATE DiscusionComentarios SET
+        Comentario = ${connection.escape(comentarioData.Comentario)},
+        ModifyBy = ${connection.escape(comentarioData.ModifyBy)},
+        DateModification = ${connection.escape(comentarioData.DateModification)}
+        WHERE IdComentario = ${connectio.scape(comentarioData.IdComentario)}`;
+  
+      connection.query(sql, function (err, result) {
+        if (err) {
+          callback(err,null);
+        } else {
+          callback(null, {
+            "msg": "success"
+          });
+        }
+      });
+    }
+  };
+
+  comentariosModel.deleteComentario = (id, callback) => {
+if (connection) {
+    var sqlExists = `
+    SELECT * FROM DiscusionComentarios WHERE IdComentario = ${connection.escape(id)}
+    `;
+
+    connection.query(sqlExists, (err, row) => {
+    if (row) {
+        var sql = `
+        DELETE FROM DiscusionComentarios WHERE IdComentario=` + connection.escape(id);
+        
+        connection.query(sql, (err, result) => {
+        if (err) {
+            callback(err,null);
+        } else{
+            callback(null, {
+            "msg": "deleted"
+            });
+        }
+        });
+
+    } else {
+
+        callback(err, {
+        "msg": "not Exists"
+        });
+
+    }
+    });
+}
+};
+
+
 module.exports = comentariosModel;
