@@ -12,17 +12,29 @@ module.exports = function(app){
         })
     });
 
+    app.get('/discusionesComentarios/:id', (req,res) => {
+        discusionesComentarios.getComentariosDiscusion(req.params.id,(err,data) => {
+            if(err)
+            {
+                res.status(500).json(err);
+            }else{
+                res.status(200).json(data);
+            }
+        })
+    });
+
     app.post('/discusionesComentarios', (req,res)=>{
         var comentario = {
-            IdComentario: null,
             IdDiscusion: req.body.IdDiscusion,
             IdVecino: req.body.IdVecino,
             Fecha: req.body.Fecha,
-            Comentario: req.body.Comentario
+            Comentario: req.body.Comentario,
+            ModifyBy: req.body.ModifyBy,
+            DateModification: req.body.DateModification
         };
 
         discusionesComentarios.insertComentario(comentario, (err,data)=>{
-            if(data && data.idInsert){
+            if(data && data.insertId){
                 res.status(200).json({
                     success: true,
                     msg: "Transacción Exitosa",
@@ -31,7 +43,8 @@ module.exports = function(app){
             }else{
                 res.status(500).json({
                     success: false,
-                    msg: "Transacción Fallida"
+                    msg: "Transacción Fallida",
+                    data: err
                 });
             }
         })

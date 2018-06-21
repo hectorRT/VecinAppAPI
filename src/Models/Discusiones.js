@@ -18,6 +18,20 @@ DiscusionesModel.getDiscusiones = (callback) => {
     }
 };
 
+DiscusionesModel.getDiscusion = (idDiscusion,callback) => {
+    if(connection){
+        connection.query('SELECT * FROM Discusiones WHERE IdDiscusion = ?', idDiscusion,
+    (err, rows) => {
+        if(err)
+        {
+            callback(err,null);
+        }else{
+            callback(null,rows);
+        }
+    })
+    }
+};
+
 DiscusionesModel.insertDiscusion = (discusion, callback) => {
     if(connection){
         connection.query('INSERT INTO Discusiones SET ?', discusion,

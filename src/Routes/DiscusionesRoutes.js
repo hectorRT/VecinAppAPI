@@ -11,6 +11,16 @@ module.exports = function(app){
         });
     });
 
+    app.get('/discusiones/:id', (req,res) => {
+        discusiones.getDiscusion(req.params.id,(err,data) => {
+            if(err){
+                res.status(500).json(err);
+            }else{
+                res.json(data);
+            }
+        });
+    });
+
     app.post('/discusiones', (req, res) => {
         var discusion = {
             IdDiscusion: null,

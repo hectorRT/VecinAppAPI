@@ -17,12 +17,25 @@ comentariosModel.getComentarios = (callback) => {
     }
 };
 
+comentariosModel.getComentariosDiscusion = (idDiscusion,callback) => {
+    if(connection){
+        connection.query("SELECT * FROM DiscusionComentarios WHERE IdDiscusion = ? ORDER BY Fecha DESC", idDiscusion,
+    (err, rows) => {
+        if(err){
+            callback(err,null);
+        }else{
+            callback(null,rows);
+        }
+    });
+    }
+};
+
 comentariosModel.insertComentario = (comentario, callback) => {
     if(connection){
-        connection.query('INSERT INTO DiscusionComentarios ?', comentario, 
+        connection.query('INSERT INTO DiscusionComentarios SET ?', comentario, 
         (err,result) => {
             if(err){
-                callback(err,{'insertId': 0});
+                throw err;
             }else{
                 callback(null, {'insertId': result.insertId});
             }
@@ -82,6 +95,5 @@ if (connection) {
     });
 }
 };
-
 
 module.exports = comentariosModel;
