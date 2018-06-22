@@ -1,7 +1,7 @@
 const DbConnection = require('../Connection/DbConnection');
 
 let VecinoModel={}
-var conexion = DbConnection();
+const conexion = DbConnection();
 
 VecinoModel.getVecinos=(callback)=>{
 
@@ -10,7 +10,7 @@ VecinoModel.getVecinos=(callback)=>{
         conexion.query("SELECT * FROM Vecinos",
             (err,rows)=>{
                 if(err){
-                    throw err;
+                    callback(err,null);
                 }
                 else{
 
@@ -22,8 +22,7 @@ VecinoModel.getVecinos=(callback)=>{
 };
 
 
-
-VecinoModel.getVecinos=(vecino,callback)=>{
+VecinoModel.getVecino=(vecino,callback)=>{
 
     if(conexion)
     {
@@ -113,21 +112,21 @@ VecinoModel.deleteVecino=(vecino,callback)=>{
                     }
                     else
                     {
-                        callback(null,{msg:"Eliminado con Exito..."});
+                        callback(null,{msg:"Eliminado con Exito"});
                     }
                 });
 
             }
             else
             {
-                callback(null,{msg:"No Existe Vecino Con ese Id"});
+                callback(null,{msg:"No Existe"});
             }
 
         });
 
-        module.exports = VecinoModel;
+  
 
     }
 
 };
-
+module.exports = VecinoModel;

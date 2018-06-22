@@ -3,9 +3,9 @@ const mysql = require('mysql');
 module.exports = () => {
     return mysql.createConnection({
         host: 'localhost',
-        user: 'tuUsuario', //root
-        password: 'tuPassword',
+        user: 'root', //root
+        password: '',
         database: 'VecinAppDb',
-        insecureAuth: true
+        
     });
 };
