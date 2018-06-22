@@ -24,3 +24,14 @@ ModifyBy INT default 0,
 DateModification datetime default now(),
 FOREIGN KEY (IdDiscusion) REFERENCES Discusiones(IdDiscusion)
 );
+
+CREATE TABLE IF NOT EXISTS Vecinos(
+    IdVecino INT PRIMARY KEY AUTO_INCREMENT,
+    Nombres VARCHAR(50),
+    Apellidos VARCHAR(75),
+    Cedula VARCHAR(15),
+    Email VARCHAR(75),
+    Direccion VARCHAR(100),
+    IdVecindario INT NOT NULL,
+    IdCargo INT NOT Null   
+);
