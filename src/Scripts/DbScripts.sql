@@ -39,5 +39,29 @@ CREATE TABLE IF NOT EXISTS Solicitudes(
     Id INT PRIMARY KEY AUTO_INCREMENT,
     Fecha VARCHAR(10),
     Tema VARCHAR(25),
-    Descripcion VARCHAR(25)
+    Descripcion
+    
+CREATE TABLE IF NOT EXISTS Vecindario(
+    IdVecindario INT PRIMARY KEY AUTO_INCREMENT,
+    idFondo INT,
+    Nombre VARCHAR(50),
+    imagenLogo TEXT,
+    ciudad VARCHAR(50),
+    sector VARCHAR(50),
+    direccionLocal(50),
+    provincia VARCHAR(50),
+    montoAporteMensual INT,
+    FechaCreacion DATETIME,
+
+);
+
+CREATE TABLE Cargos (
+
+    IdCargo INT PRIMARY KEY AUTO_INCREMENT,
+    nombre varchar(25)
+) ;
+
+CREATE TABLE FrecuenciaPagoCuotas(
+    idfrecuencia INT PRIMARY KEY AUTO_INCREMENT,
+    frecuencia varchar(25)
 );

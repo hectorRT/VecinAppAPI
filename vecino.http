@@ -1,6 +1,6 @@
 GET http://localhost:3000/vecinos  http/1.1
 ###
-GET http://localhost:3000/vecinos/1  http/1.1
+GET http://localhost:3000/cargos  http/1.1
 ###
 POST  http://localhost:3000/vecinos http/1.1
 content-type: application/json
