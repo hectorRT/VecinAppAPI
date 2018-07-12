@@ -1,7 +1,18 @@
 const discusiones = require('../Models/Discusiones');
 
-module.exports = function(app){
-    app.get('/discusiones', (req,res) => {
+module.exports = function(app) {
+
+    app.get('/estados-discusiones', (req, res) => {
+        discusiones.getEstados((err,data) => {
+            if (err) {
+                res.status(500).json(err);
+            } else {
+                res.json(data);
+            }
+        });
+    });
+
+    app.get('/discusiones', (req, res) => {
         discusiones.getDiscusiones((err,data) => {
             if(err){
                 res.status(500).json(err);
@@ -11,11 +22,11 @@ module.exports = function(app){
         });
     });
 
-    app.get('/discusiones/:id', (req,res) => {
-        discusiones.getDiscusion(req.params.id,(err,data) => {
-            if(err){
+    app.get('/discusiones/:id', (req, res) => {
+        discusiones.getDiscusion(req.params.id, (err,data) => {
+            if (err) {
                 res.status(500).json(err);
-            }else{
+            } else {
                 res.json(data);
             }
         });
@@ -32,13 +43,13 @@ module.exports = function(app){
             FechaCreacion: req.body.FechaCreacion
         };
         discusiones.insertDiscusion(discusion, (err, data) => {
-            if(data && data.insertId){
+            if (data && data.insertId) {
                 res.status(200).json({
                     success: true,
                     msg: "Transacción Exitosa",
                     data: data
                 });
-            }else{
+            } else {
                 res.status(500).json({
                     success: false,
                     msg: "Transacción Fallida"

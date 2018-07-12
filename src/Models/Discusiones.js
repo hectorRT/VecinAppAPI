@@ -6,7 +6,7 @@ const connection = DbConnection();
 
 DiscusionesModel.getEstados = (callback) => {
     if (connection) {
-        connection.query('SELECT * FROM Estados', (err, rows) => {
+        connection.query('SELECT * FROM EstadosDiscusiones', (err, rows) => {
             if (err) {
                 callback(err, null);
             } else {

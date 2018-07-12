@@ -2,10 +2,13 @@ CREATE DATABASE VecinAppDb;
 
 USE VecinAppDb;
 
-CREATE TABLE IF NOT EXISTS Estados(
+CREATE TABLE IF NOT EXISTS EstadosDiscusiones(
     IdEstado INT PRIMARY KEY AUTO_INCREMENT,
     Descripcion VARCHAR (100) NOT NULL
 );
+INSERT INTO Estados (Descripcion) VALUES ('Activa');
+INSERT INTO Estados (Descripcion) VALUES ('Concluida');
+INSERT INTO Estados (Descripcion) VALUES ('Pospuesta');
 
 CREATE TABLE IF NOT EXISTS Discusiones(
     IdDiscusion INT PRIMARY KEY AUTO_INCREMENT,
