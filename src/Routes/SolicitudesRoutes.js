@@ -11,9 +11,9 @@ module.exports = function(app){
         Solicitud.insertar(solicitud.body, respuesta);
     })
     app.put('/solicitudes/', function(solicitud, respuesta){
-        Solicitud.insertar(solicitud.body, respuesta);
+        Solicitud.actualizar(solicitud.body, respuesta);
     })
     app.delete('/solicitudes/:id/', function(solicitud, respuesta){
-        Solicitud.insertar(solicitud.body, respuesta);
+        Solicitud.delete(solicitud.params.id, respuesta);
     })
 }
