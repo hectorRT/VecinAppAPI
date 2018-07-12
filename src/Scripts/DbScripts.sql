@@ -33,7 +33,8 @@ CREATE TABLE IF NOT EXISTS Vecinos(
     Email VARCHAR(75),
     Direccion VARCHAR(100),
     IdVecindario INT NOT NULL,
-    IdCargo INT NOT Null   
+    IdCargo INT NOT Null,   
+    Idfrecuencia Int NOT Null
 );
 CREATE TABLE IF NOT EXISTS Solicitudes(
     Id INT PRIMARY KEY AUTO_INCREMENT,
