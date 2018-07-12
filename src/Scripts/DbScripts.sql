@@ -35,3 +35,9 @@ CREATE TABLE IF NOT EXISTS Vecinos(
     IdVecindario INT NOT NULL,
     IdCargo INT NOT Null   
 );
+CREATE TABLE IF NOT EXISTS Solicitudes(
+    Id INT PRIMARY KEY AUTO_INCREMENT,
+    Fecha VARCHAR(10),
+    Tema VARCHAR(25),
+    Descripcion VARCHAR(25)
+);

@@ -17,6 +17,7 @@ app.use(bodyParser.json());
 require('./Routes/DiscusionesRoutes')(app);
 require('./Routes/DiscusionesComentariosRoutes')(app);
 require('./Routes/VecinoRoutes')(app);
+require('./Routes/SolicitudesRoutes')(app);
 
 //statics files
 app.listen(app.get('port'), () =>{
