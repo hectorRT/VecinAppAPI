@@ -4,44 +4,51 @@ let DiscusionesModel = {};
 
 const connection = DbConnection();
 
+DiscusionesModel.getEstados = (callback) => {
+    if (connection) {
+        connection.query('SELECT * FROM EstadosDiscusiones', (err, rows) => {
+            if (err) {
+                callback(err, null);
+            } else {
+                callback(null, rows);
+            }
+        });
+    }
+}
+
 DiscusionesModel.getDiscusiones = (callback) => {
-    if(connection){
-        connection.query('SELECT * FROM Discusiones ORDER BY FechaCreacion DESC',
-    (err, rows) => {
-        if(err)
-        {
-            callback(err,null);
-        }else{
-            callback(null,rows);
-        }
-    })
+    if (connection) {
+        connection.query('SELECT * FROM Discusiones ORDER BY FechaCreacion DESC', (err, rows) => {
+            if (err) {
+                callback(err,null);
+            } else {
+                callback(null,rows);
+            }
+        });
     }
 };
 
 DiscusionesModel.getDiscusion = (idDiscusion,callback) => {
-    if(connection){
-        connection.query('SELECT * FROM Discusiones WHERE IdDiscusion = ?', idDiscusion,
-    (err, rows) => {
-        if(err)
-        {
-            callback(err,null);
-        }else{
-            callback(null,rows);
-        }
-    })
+    if (connection) {
+        connection.query('SELECT * FROM Discusiones WHERE IdDiscusion = ?', idDiscusion, (err, rows) => {
+            if (err) {
+                callback(err,null);
+            } else {
+                callback(null,rows);
+            }
+        })
     }
 };
 
 DiscusionesModel.insertDiscusion = (discusion, callback) => {
-    if(connection){
-        connection.query('INSERT INTO Discusiones SET ?', discusion,
-            (err, result) => {
-                if(err){
-                    callback(err, {'insertId': 0});
-                }else{
-                    callback(null, {'insertId': result.insertId});
-                }
-            });
+    if (connection) {
+        connection.query('INSERT INTO Discusiones SET ?', discusion, (err, result) => {
+            if (err) {
+                callback(err, {'insertId': 0});
+            } else {
+                callback(null, {'insertId': result.insertId});
+            }
+        });
     }
 };
 
@@ -82,19 +89,16 @@ if (connection) {
         connection.query(sql, (err, result) => {
         if (err) {
             callback(err,null);
-        } else{
+        } else {
             callback(null, {
             "msg": "deleted"
             });
         }
         });
-
     } else {
-
         callback(null, {
         "msg": "not Exists"
         });
-
     }
     });
 }
