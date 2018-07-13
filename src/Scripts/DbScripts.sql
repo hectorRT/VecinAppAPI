@@ -71,6 +71,6 @@ CREATE TABLE Cargos (
 ) ;
 
 CREATE TABLE FrecuenciaPagoCuotas(
-    idfrecuencia INT PRIMARY KEY AUTO_INCREMENT,
+    Idfrecuencia INT PRIMARY KEY AUTO_INCREMENT,
     frecuencia varchar(25)
 );

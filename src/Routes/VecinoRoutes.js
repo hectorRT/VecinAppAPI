@@ -43,7 +43,7 @@ module.exports = function(app){
 
             IdVecino: null,
             IdVecindario: req.body.IdVecindario,
-            IdFrecuencia:req.body.IdFrecuencia,
+            Idfrecuencia:req.body.Idfrecuencia,
             IdCargo: req.body.IdCargo,
             Nombres: req.body.Nombres,
             Apellidos: req.body.Apellidos,
@@ -76,7 +76,7 @@ module.exports = function(app){
 
             IdVecino: req.params.IdVecino,
             IdVecindario: req.body.IdVecindario,
-            IdFrecuencia:req.body.IdFrecuencia,
+            Idfrecuencia:req.body.Idfrecuencia,
             IdCargo: req.body.IdCargo,
             Nombres: req.body.Nombres,
             Apellidos: req.body.Apellidos,
