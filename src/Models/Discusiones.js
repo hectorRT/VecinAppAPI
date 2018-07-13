@@ -4,48 +4,58 @@ let DiscusionesModel = {};
 
 const connection = DbConnection();
 
+DiscusionesModel.getEstados = (callback) => {
+    if (connection) {
+        connection.query('SELECT * FROM EstadosDiscusiones', (err, rows) => {
+            if (err) {
+                callback(err, null);
+            } else {
+                callback(null, rows);
+            }
+        });
+    }
+}
+
 DiscusionesModel.getDiscusiones = (callback) => {
-    if(connection){
-        connection.query('SELECT * FROM Discusiones ORDER BY FechaCreacion DESC',
-    (err, rows) => {
-        if(err)
-        {
-            callback(err,null);
-        }else{
-            callback(null,rows);
-        }
-    })
+    if (connection) {
+        connection.query('SELECT * FROM Discusiones ORDER BY FechaCreacion DESC', (err, rows) => {
+            if (err) {
+                callback(err,null);
+            } else {
+                callback(null,rows);
+            }
+        });
     }
 };
 
 DiscusionesModel.getDiscusion = (idDiscusion,callback) => {
-    if(connection){
-        connection.query('SELECT * FROM Discusiones WHERE IdDiscusion = ?', idDiscusion,
-    (err, rows) => {
-        if(err)
-        {
-            callback(err,null);
-        }else{
-            callback(null,rows);
-        }
-    })
+    if (connection) {
+        connection.query('SELECT * FROM Discusiones WHERE IdDiscusion = ?', idDiscusion, (err, rows) => {
+            if (err) {
+                callback(err,null);
+            } else {
+                callback(null,rows);
+            }
+        })
     }
 };
 
 DiscusionesModel.insertDiscusion = (discusion, callback) => {
-    if(connection){
-        connection.query('INSERT INTO Discusiones SET ?', discusion,
-            (err, result) => {
-                if(err){
-                    callback(err, {'insertId': 0});
-                }else{
-                    callback(null, {'insertId': result.insertId});
-                }
-            });
+    if (connection) {
+        connection.query('INSERT INTO Discusiones SET ?', discusion, (err, result) => {
+            if (err) {
+                callback(err, {'insertId': 0});
+            } else {
+                callback(null, {'insertId': result.insertId});
+            }
+        });
     }
 };
 
 DiscusionesModel.updateDiscusion = (discusionData, callback) => {
+
+    // console.log('entró al update');
+
     if (connection) {
       const sql = `
         UPDATE Discusiones SET
@@ -55,14 +65,18 @@ DiscusionesModel.updateDiscusion = (discusionData, callback) => {
         Estado = ${connection.escape(discusionData.Estado)},
         ModifyBy = ${connection.escape(discusionData.ModifyBy)},
         DateModification = ${connection.escape(discusionData.DateModification)}
-        WHERE id = ${userData.id}`;
+        WHERE IdDiscusion = ${discusionData.IdDiscusion}`;
   
+        // console.log(sql);
+
       connection.query(sql, function (err, result) {
         if (err) {
+            // console.log('Error SQL');
           callback(err,null);
         } else {
+            // console.log('success en el update');
           callback(null, {
-            "msg": "success"
+            "success": true
           });
         }
       });
@@ -82,19 +96,16 @@ if (connection) {
         connection.query(sql, (err, result) => {
         if (err) {
             callback(err,null);
-        } else{
+        } else {
             callback(null, {
             "msg": "deleted"
             });
         }
         });
-
     } else {
-
         callback(null, {
         "msg": "not Exists"
         });
-
     }
     });
 }
