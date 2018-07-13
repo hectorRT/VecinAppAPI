@@ -40,16 +40,16 @@ module.exports = function(app){
     app.post('/vecinos',(req,res)=>{
 
         var vecinoData ={
-
             IdVecino: null,
             IdVecindario: req.body.IdVecindario,
+            Idfrecuencia:req.body.Idfrecuencia,
             IdCargo: req.body.IdCargo,
             Nombres: req.body.Nombres,
             Apellidos: req.body.Apellidos,
             Cedula: req.body.Cedula,
-            Email: req.body.Email,
             Direccion: req.body.Direccion,
-
+            Email: req.body.Email,
+            Clave: req.body.Clave
         };
 
         vecino.insertVecino(vecinoData,(err,data)=>{
@@ -75,12 +75,14 @@ module.exports = function(app){
 
             IdVecino: req.params.IdVecino,
             IdVecindario: req.body.IdVecindario,
+            Idfrecuencia:req.body.Idfrecuencia,
             IdCargo: req.body.IdCargo,
             Nombres: req.body.Nombres,
             Apellidos: req.body.Apellidos,
             Cedula: req.body.Cedula,
-            Email: req.body.Email,
             Direccion: req.body.Direccion,
+            Email: req.body.Email,
+            Clave:req.body.Clave
 
         };
 

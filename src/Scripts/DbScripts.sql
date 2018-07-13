@@ -35,13 +35,15 @@ CREATE TABLE IF NOT EXISTS DiscusionComentarios(
 
 CREATE TABLE IF NOT EXISTS Vecinos(
     IdVecino INT PRIMARY KEY AUTO_INCREMENT,
+    IdVecindario INT NOT NULL,
+    IdCargo INT NOT Null,   
+    Idfrecuencia Int NOT Null
     Nombres VARCHAR(50),
     Apellidos VARCHAR(75),
     Cedula VARCHAR(15),
-    Email VARCHAR(75),
     Direccion VARCHAR(100),
-    IdVecindario INT NOT NULL,
-    IdCargo INT NOT Null   
+    Email VARCHAR(75),
+    clavC varchar(25)
 );
 CREATE TABLE IF NOT EXISTS Solicitudes(
     Id INT PRIMARY KEY AUTO_INCREMENT,
@@ -70,6 +72,6 @@ CREATE TABLE Cargos (
 ) ;
 
 CREATE TABLE FrecuenciaPagoCuotas(
-    idfrecuencia INT PRIMARY KEY AUTO_INCREMENT,
+    Idfrecuencia INT PRIMARY KEY AUTO_INCREMENT,
     frecuencia varchar(25)
 );

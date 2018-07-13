@@ -8,7 +8,7 @@ CargoModel.getCargos=(callback)=>{
 
     if(conexion){
 
-        conexion.query('SELECT * FROM cargos',
+        conexion.query("SELECT * FROM Cargos",
         (err, resul)=>{
 
             if(err){
