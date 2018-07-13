@@ -20,6 +20,7 @@ require('./Routes/VecinoRoutes')(app);
 require('./Routes/SolicitudesRoutes')(app);
 require('./Routes/CargoRoutes')(app);
 require('./Routes/FrecuenciaRoutes')(app);
+require('./Routes/AportesRoutes')(app);
 
 //statics files
 app.listen(app.get('port'), () =>{

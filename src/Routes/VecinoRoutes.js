@@ -21,6 +21,7 @@ module.exports = function(app){
 
     });
 
+
     app.get('/vecinos/:id', (req,res)=>{
 
         vecino.getVecino(req.params.id,(err,data)=>{
