@@ -53,6 +53,9 @@ DiscusionesModel.insertDiscusion = (discusion, callback) => {
 };
 
 DiscusionesModel.updateDiscusion = (discusionData, callback) => {
+
+    // console.log('entró al update');
+
     if (connection) {
       const sql = `
         UPDATE Discusiones SET
@@ -62,14 +65,18 @@ DiscusionesModel.updateDiscusion = (discusionData, callback) => {
         Estado = ${connection.escape(discusionData.Estado)},
         ModifyBy = ${connection.escape(discusionData.ModifyBy)},
         DateModification = ${connection.escape(discusionData.DateModification)}
-        WHERE id = ${userData.id}`;
+        WHERE IdDiscusion = ${discusionData.IdDiscusion}`;
   
+        // console.log(sql);
+
       connection.query(sql, function (err, result) {
         if (err) {
+            // console.log('Error SQL');
           callback(err,null);
         } else {
+            // console.log('success en el update');
           callback(null, {
-            "msg": "success"
+            "success": true
           });
         }
       });
