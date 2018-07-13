@@ -6,9 +6,9 @@ CREATE TABLE IF NOT EXISTS EstadosDiscusiones(
     IdEstado INT PRIMARY KEY AUTO_INCREMENT,
     Descripcion VARCHAR (100) NOT NULL
 );
-INSERT INTO Estados (Descripcion) VALUES ('Activa');
-INSERT INTO Estados (Descripcion) VALUES ('Concluida');
-INSERT INTO Estados (Descripcion) VALUES ('Pospuesta');
+INSERT INTO EstadosDiscusiones (Descripcion) VALUES ('Activa');
+INSERT INTO EstadosDiscusiones (Descripcion) VALUES ('Concluida');
+INSERT INTO EstadosDiscusiones (Descripcion) VALUES ('Pospuesta');
 
 CREATE TABLE IF NOT EXISTS Discusiones(
     IdDiscusion INT PRIMARY KEY AUTO_INCREMENT,
@@ -20,6 +20,20 @@ CREATE TABLE IF NOT EXISTS Discusiones(
     FechaCreacion DATETIME DEFAULT NOW(),
     ModifyBy INT default 0,
     DateModification datetime default now()
+);
+
+CREATE TABLE IF NOT EXISTS DiscusionComentarios(
+    IdComentario INT PRIMARY KEY AUTO_INCREMENT,
+    IdDiscusion INT NOT NULL,
+    IdVecino INT DEFAULT 0,
+    Fecha DATETIME NOT NULL,
+    Comentario VARCHAR(500),
+    ModifyBy INT default 0,
+    DateModification datetime default now()
+
+    -- Quité la Foreign key por que me estaba dando problemas para eliminar discusión aun cuando no había ningún comentario de ésta
+    -- Y hay que ahorrar tiempo
+    -- FOREIGN KEY (IdDiscusion) REFERENCES Discusiones(IdDiscusion)
 );
 
 
@@ -37,17 +51,6 @@ CREATE TABLE IF NOT EXISTS Discusiones(
 
 
 
-CREATE TABLE IF NOT EXISTS DiscusionComentarios(
-    IdComentario INT PRIMARY KEY AUTO_INCREMENT,
-    IdDiscusion INT NOT NULL,
-    IdVecino INT DEFAULT 0,
-    Fecha DATETIME NOT NULL,
-    Comentario VARCHAR(500),
-    ModifyBy INT default 0,
-    DateModification datetime default now(),
-    FOREIGN KEY (IdDiscusion) REFERENCES Discusiones(IdDiscusion)
-);
-
 CREATE TABLE IF NOT EXISTS Vecinos(
     IdVecino INT PRIMARY KEY AUTO_INCREMENT,
     IdVecindario INT NOT NULL,
@@ -60,12 +63,15 @@ CREATE TABLE IF NOT EXISTS Vecinos(
     Email VARCHAR(75),
     Clave varchar(25)
 );
+
+
 CREATE TABLE IF NOT EXISTS Solicitudes(
     Id INT PRIMARY KEY AUTO_INCREMENT,
     Fecha VARCHAR(10),
     Tema VARCHAR(25),
-    Descripcion
-    
+    Descripcion VARCHAR(100)
+);
+
 CREATE TABLE IF NOT EXISTS Vecindario(
     IdVecindario INT PRIMARY KEY AUTO_INCREMENT,
     idFondo INT,
@@ -84,7 +90,7 @@ CREATE TABLE Cargos (
 
     IdCargo INT PRIMARY KEY AUTO_INCREMENT,
     nombre varchar(25)
-) ;
+);
 
 CREATE TABLE FrecuenciaPagoCuotas(
     Idfrecuencia INT PRIMARY KEY AUTO_INCREMENT,
