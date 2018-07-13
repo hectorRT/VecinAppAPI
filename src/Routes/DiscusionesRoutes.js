@@ -69,8 +69,10 @@ module.exports = function(app) {
             DateModification: req.body.DateModification
         };
 
+        // console.log(discusionData);
+
         discusiones.updateDiscusion(discusionData, function (err, data) {
-            if (data && data.msg) {
+            if (data && data.success) {
                 res.status(200).json({
                     success: true,
                     data: data
