@@ -43,8 +43,6 @@ VecinoModel.getVecino=(vecino,callback)=>{
 };
 
 
-
-
 VecinoModel.insertVecino =(vecino, callback)=>{
 
     if(conexion){

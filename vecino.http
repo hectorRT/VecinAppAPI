@@ -1,4 +1,4 @@
-GET http://localhost:3000/vecinos  http/1.1
+GET http://localhost:3000/aportes  http/1.1
 ###
 GET http://localhost:3000/cargos  http/1.1
 ###
@@ -7,6 +7,5 @@ content-type: application/json
 
 {   "IdVecino":1,
     "Nombre": "Juan",
-    "Nota":"Nada    que decir",
-    "FechaCreacion":""
+    "Nota":"Nada que decir"
 }
