@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS Vecinos(
     Cedula VARCHAR(15),
     Direccion VARCHAR(100),
     Email VARCHAR(75),
-    clavC varchar(25)
+    Clave varchar(25)
 );
 CREATE TABLE IF NOT EXISTS Solicitudes(
     Id INT PRIMARY KEY AUTO_INCREMENT,
