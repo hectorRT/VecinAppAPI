@@ -14,6 +14,21 @@ ModifyBy INT default 0,
 DateModification datetime default now()
 );
 
+
+
+    CREATE TABLE IF NOT EXISTS Aportes(
+    IdAporte INT PRIMARY KEY AUTO_INCREMENT,
+    IdVecino INT DEFAULT 0,
+    FechaCreacion DATETIME NOT NULL,
+    Nombre VARCHAR(500),
+    Nota VARCHAR(500),
+    ModifyBy INT default 0,
+    DateModification datetime default now(),
+    FOREIGN KEY (IdVecino) REFERENCES Discusiones(IdVecino)
+    );
+
+
+
 CREATE TABLE IF NOT EXISTS DiscusionComentarios(
 IdComentario INT PRIMARY KEY AUTO_INCREMENT,
 IdDiscusion INT NOT NULL,
