@@ -18,9 +18,9 @@ AportesModel.getAporte = (callback) => {
     }
 };
 
-AportesModel.getAporte = (Idaporte,callback) => {
+AportesModel.getAportes = (Idaporte,callback) => {
     if(connection){
-        connection.query('SELECT * FROM Aportes WHERE Idaporte = ?', Idaporte,
+        connection.query('SELECT * FROM Aportes WHERE IdAporte = ?', Idaporte,
     (err, rows) => {
         if(err)
         {
@@ -34,10 +34,10 @@ AportesModel.getAporte = (Idaporte,callback) => {
 
 AportesModel.insertAporte = (aporte, callback) => {
     if(connection){
-        connection.query('INSERT INTO Aportes SET ?', aporte,
+        connection.query('INSERT INTO Aportes SET?', aporte,
             (err, result) => {
                 if(err){
-                    callback(err, {'insertId': 0});
+                    throw err;
                 }else{
                     callback(null, {'insertId': result.insertId});
                 }

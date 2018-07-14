@@ -12,7 +12,7 @@ module.exports = function(app){
     });
 
     app.get('/aportes/:id', (req,res) => {
-        aportes.getAporte(req.params.id,(err,data) => {
+        aportes.getAportes(req.params.id,(err,data) => {
             if(err){
                 res.status(500).json(err);
             }else{
@@ -22,14 +22,16 @@ module.exports = function(app){
     });
 
     app.post('/aportes', (req, res) => {
-        var aportes = {
+        var aporte = {
             IdAporte: null,
             IdVecino: req.body.IdVecino,
             Nombre: req.body.Nombre,
             Nota: req.body.Nota,
-            FechaCreacion: req.body.FechaCreacion
+            FechaCreacion: req.body.FechaCreacion,
+            ModifyBy:req.body.ModifyBy,
+            DateModification:req.body.DateModification
         };
-        aportes.insertAporte(aportes, (err, data) => {
+        aportes.insertAporte(aporte, (err, data) => {
             if(data && data.insertId){
                 res.status(200).json({
                     success: true,
@@ -47,13 +49,13 @@ module.exports = function(app){
 
     app.put('/aportes/:id', (req, res) => {
         const AportesData = {
-            IdAporte: req.params.id,
+            IdAporte: null,
             IdVecino: req.body.IdVecino,
             Nombre: req.body.Nombre,
             Nota: req.body.Nota,
             FechaCreacion: req.body.FechaCreacion,
-            ModifyBy: req.body.IdVecino,
-            DateModification: req.body.DateModification
+            ModifiBy:req.body.ModifiBy,
+            DateModification:req.body.DateModification
         };
 
         aportes.updateAporte(AportesData, function (err, data) {
@@ -71,7 +73,7 @@ module.exports = function(app){
         });
     });
 
-    app.deleteAporte('/aportes/:id', (req, res) => {
+    app.delete('/aportes/:id', (req, res) => {
         var id = req.params.id;
         aportes.deleteAporte(id, (err, data) =>  {
             if (data && (data.msg === 'deleted' || data.msg == 'not Exists')) {

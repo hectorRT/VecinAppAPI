@@ -21,6 +21,7 @@ module.exports = function(app){
 
     });
 
+
     app.get('/vecinos/:id', (req,res)=>{
 
         vecino.getVecino(req.params.id,(err,data)=>{
@@ -36,6 +37,22 @@ module.exports = function(app){
 
         });
     });
+
+
+app.get('/Vecinos/Email/:email', (req,res)=>{
+
+    vecino.SeleccionarEmail(req.params.email,(err,data)=>{
+        if(err)
+        {
+
+            res.status(500).json(err);
+        }
+        else
+        {
+            res.json(data);
+        }
+    })
+})
 
     app.post('/vecinos',(req,res)=>{
 
