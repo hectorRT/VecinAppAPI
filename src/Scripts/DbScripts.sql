@@ -11,6 +11,7 @@ INSERT INTO EstadosDiscusiones (Descripcion) VALUES ('Concluida');
 INSERT INTO EstadosDiscusiones (Descripcion) VALUES ('Pospuesta');
 
 CREATE TABLE IF NOT EXISTS Discusiones(
+
     IdDiscusion INT PRIMARY KEY AUTO_INCREMENT,
     IdVecino INT DEFAULT 0,
     Titulo VARCHAR(100) NOT NULL,
@@ -23,6 +24,7 @@ CREATE TABLE IF NOT EXISTS Discusiones(
 );
 
 CREATE TABLE IF NOT EXISTS DiscusionComentarios(
+
     IdComentario INT PRIMARY KEY AUTO_INCREMENT,
     IdDiscusion INT NOT NULL,
     IdVecino INT DEFAULT 0,
@@ -37,8 +39,21 @@ CREATE TABLE IF NOT EXISTS DiscusionComentarios(
 );
 
 
+CREATE TABLE IF NOT EXISTS Eventos(
 
-    CREATE TABLE IF NOT EXISTS Aportes(
+    IdEvento INT PRIMARY KEY AUTO_INCREMENT,
+    IdVecindario INT NOT NULL,
+    Nombre VARCHAR(100),
+    Descripcion VARCHAR(200),
+    Lugar VARCHAR(100),
+    HoraInicio DATETIME,
+    HoraFin DATETIME,
+    FechaCreacion DATETIME
+
+);
+
+
+CREATE TABLE IF NOT EXISTS Aportes(
     IdAporte INT PRIMARY KEY AUTO_INCREMENT,
     IdVecino INT DEFAULT 0,
     FechaCreacion DATETIME NOT NULL,
