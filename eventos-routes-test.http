@@ -1,0 +1,43 @@
+### TEST de las rutas de eventos
+
+GET http://localhost:3000/eventos HTTP/1.1
+
+###
+
+GET http://localhost:3000/eventos/1 HTTP/1.1
+
+###
+
+POST http://localhost:3000/eventos/ HTTP/1.1
+content-type: application/json
+
+{
+    "IdEvento": 0,
+    "IdVecindario": 2,
+    "Nombre": "Reunión 3",
+    "Descripcion": "reunion semanal 3",
+    "Lugar": "casa de pachuli",
+    "HoraInicio": "2018-07-15 18:00:00",
+    "HoraFin": "2018-07-15 19:00:00",
+    "FechaCreacion": "2018-07-13"
+}
+
+###
+
+PUT http://localhost:3000/eventos/4 HTTP/1.1
+content-type: application/json
+
+{
+    "IdEvento": 4,
+    "IdVecindario": 2,
+    "Nombre": "Reunión 11",
+    "Descripcion": "reunion semanal 11",
+    "Lugar": "Casa de toñito",
+    "HoraInicio": "2018-07-15 18:00:00",
+    "HoraFin": "2018-07-15 19:00:00",
+    "FechaCreacion": "2018-07-13"
+}
+
+###
+
+DELETE http://localhost:3000/eventos/5 HTTP/1.1
