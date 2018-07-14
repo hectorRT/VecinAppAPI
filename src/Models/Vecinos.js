@@ -43,6 +43,25 @@ VecinoModel.getVecino=(vecino,callback)=>{
 };
 
 
+VecinoModel.SeleccionarEmail= (Email,callback)=>
+{
+    if(conexion)
+    {
+        conexion.query('Select *from Vecinos where email=?',Email,
+        (err,resltado)=>{
+
+            if(err)
+            {
+                throw err;
+            }
+            else
+            {
+                callback(null,resltado);
+            }
+        });
+    }
+    
+}
 VecinoModel.insertVecino =(vecino, callback)=>{
 
     if(conexion){
