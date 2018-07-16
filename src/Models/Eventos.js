@@ -17,6 +17,19 @@ EventosModel.getEventos = (callback) => {
     }
 }
 
+EventosModel.getEvento = (id, callback) => {
+    
+    if (connection) {
+        connection.query('SELECT * FROM Eventos WHERE IdEvento = ?', id, (err, rows) => {
+            if (err) {
+                callback(err, null);
+            } else {
+                callback(null, rows);
+            }
+        });
+    }
+}
+
 EventosModel.getEventosVecindario = (idVecindario, callback) => {
 
     if (connection) {

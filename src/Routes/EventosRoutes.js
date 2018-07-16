@@ -12,7 +12,18 @@ module.exports = function(app) {
         });
     });
 
-    app.get('/eventos/:IdVecindario', (req, res) => {
+    app.get('/eventos/:id', (req, res) => {
+
+        eventos.getEvento(req.params.id, (err, data) => {
+            if (err) {
+                res.status(500).json(err);
+            } else {
+                res.json(data);
+            }
+        });
+    });
+
+    app.get('/eventos/vecindario/:IdVecindario', (req, res) => {
 
         eventos.getEventosVecindario(req.params.IdVecindario, (err, data) => {
             if (err) {

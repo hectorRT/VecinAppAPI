@@ -4,7 +4,11 @@ GET http://localhost:3000/eventos HTTP/1.1
 
 ###
 
-GET http://localhost:3000/eventos/1 HTTP/1.1
+GET http://localhost:3000/eventos/7 HTTP/1.1
+
+###
+
+GET http://localhost:3000/eventos/vecindario/2 HTTP/1.1
 
 ###
 
@@ -14,9 +18,9 @@ content-type: application/json
 {
     "IdEvento": 0,
     "IdVecindario": 2,
-    "Nombre": "Reunión 3",
-    "Descripcion": "reunion semanal 3",
-    "Lugar": "casa de pachuli",
+    "Nombre": "Reunión 7",
+    "Descripcion": "reunion semanal 7",
+    "Lugar": "casa de soza",
     "HoraInicio": "2018-07-15 18:00:00",
     "HoraFin": "2018-07-15 19:00:00",
     "FechaCreacion": "2018-07-13"
@@ -24,15 +28,15 @@ content-type: application/json
 
 ###
 
-PUT http://localhost:3000/eventos/4 HTTP/1.1
+PUT http://localhost:3000/eventos/7 HTTP/1.1
 content-type: application/json
 
 {
-    "IdEvento": 4,
-    "IdVecindario": 2,
-    "Nombre": "Reunión 11",
-    "Descripcion": "reunion semanal 11",
-    "Lugar": "Casa de toñito",
+    "IdEvento": 7,
+    "IdVecindario": 1,
+    "Nombre": "Reunión 12",
+    "Descripcion": "reunion semanal 12",
+    "Lugar": "Casa de papariro",
     "HoraInicio": "2018-07-15 18:00:00",
     "HoraFin": "2018-07-15 19:00:00",
     "FechaCreacion": "2018-07-13"
