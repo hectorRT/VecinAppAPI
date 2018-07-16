@@ -36,12 +36,16 @@ AportesModel.insertAporte = (aporte, callback) => {
     if(connection){
         connection.query('INSERT INTO Aportes SET?', aporte,
             (err, result) => {
+                console.log(err);
+                console.log(result);
                 if(err){
                     throw err;
                 }else{
                     callback(null, {'insertId': result.insertId});
                 }
             });
+    }else{
+        console.log('Error');
     }
 };
 

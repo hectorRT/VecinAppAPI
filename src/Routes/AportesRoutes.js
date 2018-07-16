@@ -22,6 +22,7 @@ module.exports = function(app){
     });
 
     app.post('/aportes', (req, res) => {
+        console.log('ANt');
         var aporte = {
             IdAporte: null,
             IdVecino: req.body.IdVecino,
@@ -31,7 +32,10 @@ module.exports = function(app){
             ModifyBy:req.body.ModifyBy,
             DateModification:req.body.DateModification
         };
+        console.log('ANt');
         aportes.insertAporte(aporte, (err, data) => {
+            console.log(data);
+            console.log(err);
             if(data && data.insertId){
                 res.status(200).json({
                     success: true,
