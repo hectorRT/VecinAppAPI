@@ -43,8 +43,25 @@ VecinoModel.getVecino=(vecino,callback)=>{
 };
 
 
+VecinoModel.SeleccionarEmail= (Email,callback)=>
+{
+    if(conexion)
+    {
+        conexion.query('Select *from Vecinos where email=?',Email,
+        (err,resltado)=>{
 
-
+            if(err)
+            {
+                throw err;
+            }
+            else
+            {
+                callback(null,resltado);
+            }
+        });
+    }
+    
+}
 VecinoModel.insertVecino =(vecino, callback)=>{
 
     if(conexion){
@@ -73,8 +90,9 @@ VecinoModel.updateVecino=(vecino,callback)=>{
        Nombres = ${conexion.escape(vecino.nombre)},
        Apellidos = ${conexion.escape(vecino.Apellidos)},
        Cedula = ${conexion.escape(vecino.Cedula)},
+       Direccion = ${conexion.escape(vecino.Direccion)},
        Email = ${conexion.escape(vecino.Email)},
-       Direccion = ${conexion.escape(vecino.Direccion)}
+       Clave = ${conexion.escape(vecino.Clave)}
        `;
 
        conexion.query(sql,(err,result)=>{

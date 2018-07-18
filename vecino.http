@@ -1,16 +1,11 @@
-GET http://localhost:3000/vecinos  http/1.1
+GET http://localhost:3000/aportes  http/1.1
 ###
 GET http://localhost:3000/cargos  http/1.1
 ###
-POST  http://localhost:3000/vecinos http/1.1
+POST  http://localhost:3000/aportes http/1.1
 content-type: application/json
 
-{
-    "Nombres": "Juan",
-    "Apellidos": "Perez",
-    "Cedula": "40209612031",
-    "Email":"Perez@gmail.com",
-    "Direccion":"Sfm",
-    "IdVecindario":1,
-    "IdCargo":2
+{   "IdVecino":1,
+    "Nombre": "Juan",
+    "Nota":"Nada que decir"
 }

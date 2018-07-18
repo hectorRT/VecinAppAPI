@@ -21,6 +21,7 @@ module.exports = function(app){
 
     });
 
+
     app.get('/vecinos/:id', (req,res)=>{
 
         vecino.getVecino(req.params.id,(err,data)=>{
@@ -37,19 +38,35 @@ module.exports = function(app){
         });
     });
 
+
+app.get('/Vecinos/Email/:email', (req,res)=>{
+
+    vecino.SeleccionarEmail(req.params.email,(err,data)=>{
+        if(err)
+        {
+
+            res.status(500).json(err);
+        }
+        else
+        {
+            res.json(data);
+        }
+    })
+})
+
     app.post('/vecinos',(req,res)=>{
 
         var vecinoData ={
-
             IdVecino: null,
             IdVecindario: req.body.IdVecindario,
+            Idfrecuencia:req.body.Idfrecuencia,
             IdCargo: req.body.IdCargo,
             Nombres: req.body.Nombres,
             Apellidos: req.body.Apellidos,
             Cedula: req.body.Cedula,
-            Email: req.body.Email,
             Direccion: req.body.Direccion,
-
+            Email: req.body.Email,
+            Clave: req.body.Clave
         };
 
         vecino.insertVecino(vecinoData,(err,data)=>{
@@ -75,12 +92,14 @@ module.exports = function(app){
 
             IdVecino: req.params.IdVecino,
             IdVecindario: req.body.IdVecindario,
+            Idfrecuencia:req.body.Idfrecuencia,
             IdCargo: req.body.IdCargo,
             Nombres: req.body.Nombres,
             Apellidos: req.body.Apellidos,
             Cedula: req.body.Cedula,
-            Email: req.body.Email,
             Direccion: req.body.Direccion,
+            Email: req.body.Email,
+            Clave:req.body.Clave
 
         };
 

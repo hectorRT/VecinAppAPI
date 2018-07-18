@@ -1,0 +1,47 @@
+### TEST de las rutas de eventos
+
+GET http://localhost:3000/eventos HTTP/1.1
+
+###
+
+GET http://localhost:3000/eventos/7 HTTP/1.1
+
+###
+
+GET http://localhost:3000/eventos/vecindario/2 HTTP/1.1
+
+###
+
+POST http://localhost:3000/eventos/ HTTP/1.1
+content-type: application/json
+
+{
+    "IdEvento": 0,
+    "IdVecindario": 2,
+    "Nombre": "Reunión 7",
+    "Descripcion": "reunion semanal 7",
+    "Lugar": "casa de soza",
+    "HoraInicio": "2018-07-15 18:00:00",
+    "HoraFin": "2018-07-15 19:00:00",
+    "FechaCreacion": "2018-07-13"
+}
+
+###
+
+PUT http://localhost:3000/eventos/7 HTTP/1.1
+content-type: application/json
+
+{
+    "IdEvento": 7,
+    "IdVecindario": 1,
+    "Nombre": "Reunión 12",
+    "Descripcion": "reunion semanal 12",
+    "Lugar": "Casa de papariro",
+    "HoraInicio": "2018-07-15 18:00:00",
+    "HoraFin": "2018-07-15 19:00:00",
+    "FechaCreacion": "2018-07-13"
+}
+
+###
+
+DELETE http://localhost:3000/eventos/5 HTTP/1.1

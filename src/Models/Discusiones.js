@@ -1,6 +1,7 @@
 const DbConnection = require('../Connection/DbConnection');
 
 let DiscusionesModel = {};
+// let DiscusionesComentariosModel = require('./DiscusionesComentarios');
 
 const connection = DbConnection();
 
@@ -53,6 +54,9 @@ DiscusionesModel.insertDiscusion = (discusion, callback) => {
 };
 
 DiscusionesModel.updateDiscusion = (discusionData, callback) => {
+
+    // console.log('entró al update');
+
     if (connection) {
       const sql = `
         UPDATE Discusiones SET
@@ -62,14 +66,18 @@ DiscusionesModel.updateDiscusion = (discusionData, callback) => {
         Estado = ${connection.escape(discusionData.Estado)},
         ModifyBy = ${connection.escape(discusionData.ModifyBy)},
         DateModification = ${connection.escape(discusionData.DateModification)}
-        WHERE id = ${userData.id}`;
+        WHERE IdDiscusion = ${discusionData.IdDiscusion}`;
   
+        // console.log(sql);
+
       connection.query(sql, function (err, result) {
         if (err) {
+            // console.log('Error SQL');
           callback(err,null);
         } else {
+            // console.log('success en el update');
           callback(null, {
-            "msg": "success"
+            "success": true
           });
         }
       });
@@ -82,12 +90,26 @@ if (connection) {
     SELECT * FROM Discusiones WHERE IdDiscusion = ${connection.escape(id)}
     `;
 
+    // console.log(sqlExists);
+
     connection.query(sqlExists, (err, row) => {
+        console.log('dentro');
     if (row) {
+
+        //HAY QUE ELIMINAR COMENTARIOS
+        // let comentarios = DiscusionesComentariosModel.getComentariosDiscusion(+connection.escape(id));
+        // comentarios.forEach(comentario => {
+        //     comentario.deleteComentario(comentario.IdComentario);
+        // });
+        // DiscusionesComentariosModel.deleteComentario()
+
         var sql = `DELETE FROM Discusiones WHERE IdDiscusion=` + connection.escape(id);
+
+        console.log(sql);
         
         connection.query(sql, (err, result) => {
         if (err) {
+            console.log('error al eliminar');
             callback(err,null);
         } else {
             callback(null, {
@@ -96,6 +118,7 @@ if (connection) {
         }
         });
     } else {
+        console.log('error exists');
         callback(null, {
         "msg": "not Exists"
         });
