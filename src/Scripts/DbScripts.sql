@@ -111,3 +111,25 @@ CREATE TABLE FrecuenciaPagoCuotas(
     Idfrecuencia INT PRIMARY KEY AUTO_INCREMENT,
     frecuencia varchar(25)
 );
+
+CREATE TABLE IF NOT EXISTS Cuota(
+    IdCuota INT PRIMARY KEY AUTO_INCREMENT,
+    idVecindario INT,
+    Fecha DATETIME (50),
+    numeroCuota INT,
+    monto VARCHAR(50),
+    balance VARCHAR(50),
+    fechaUltimoPago DATETIME (50),
+    saldada VARCHAR(50),
+    FOREIGN KEY (idVecindario) REFERENCES Vecinos (IdVecino)
+);
+
+CREATE TABLE IF NOT EXISTS PagoCuota(
+    IdPago INT PRIMARY KEY AUTO_INCREMENT,
+    idVecino INT,
+    idCuota INT,
+    monto VARCHAR(50),
+    Fecha DATETIME (50),
+    nota VARCHAR (50),
+    /*FOREIGN KEY (idVecino) REFERENCES Vecinos (idVecino)*/
+);
