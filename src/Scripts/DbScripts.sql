@@ -133,3 +133,12 @@ CREATE TABLE IF NOT EXISTS PagoCuota(
     nota VARCHAR (50),
     /*FOREIGN KEY (idVecino) REFERENCES Vecinos (idVecino)*/
 );
+
+CREATE TABLE IF NOT EXISTS SUPLIDORES(){
+    IdSuplidor INT PRIMARY KEY AUTO_INCREMENT,
+    Nombre VARCHAR(100),
+    Telefono VARCHAR(20),
+    Direccion VARCHAR(250),
+    Representante VARCHAR(100),
+    TelRepresentante VARCHAR(20)
+}
