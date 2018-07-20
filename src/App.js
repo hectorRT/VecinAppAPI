@@ -27,5 +27,5 @@ require('./Routes/PagosRoutes')(app);
 
 //statics files
 app.listen(app.get('port'), () =>{
-    console.log('server on port ' + app.get('port 4200'));
+    console.log('server on port ' + app.get('port'));
 });
