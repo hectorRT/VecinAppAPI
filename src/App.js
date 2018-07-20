@@ -22,8 +22,10 @@ require('./Routes/CargoRoutes')(app);
 require('./Routes/FrecuenciaRoutes')(app);
 require('./Routes/EventosRoutes')(app);
 require('./Routes/AportesRoutes')(app);
+require('./Routes/CuotasRoutes')(app);
+require('./Routes/PagosRoutes')(app);
 
 //statics files
 app.listen(app.get('port'), () =>{
-    console.log('server on port ' + app.get('port'));
+    console.log('server on port ' + app.get('port 4200'));
 });
