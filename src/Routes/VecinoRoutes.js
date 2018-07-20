@@ -39,6 +39,24 @@ module.exports = function(app){
     });
 
 
+
+    app.get('/vecinos/consulta/:nombre', (req,res)=>{
+
+        vecino.SeleccionarVecinoNombre(req.params.nombre,(err,data)=>{
+
+            if(err)
+            {
+                res.status(500).json(err);
+            }
+            else
+            {
+                res.json(data);
+            }
+
+        });
+    });
+
+
 app.get('/Vecinos/Email/:email', (req,res)=>{
 
     vecino.SeleccionarEmail(req.params.email,(err,data)=>{

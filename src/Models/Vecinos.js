@@ -62,6 +62,30 @@ VecinoModel.SeleccionarEmail= (Email,callback)=>
     }
     
 }
+
+
+VecinoModel.SeleccionarVecinoNombre= (nombre,callback)=>
+{
+    if(conexion)
+    {
+        conexion.query('Select * from Vecinos where nombres LIKE?','%'+nombre+'%',
+        (err,resltado)=>{
+
+            if(err)
+            {
+                throw err;
+            }
+            else
+            {
+                callback(null,resltado);
+            }
+        });
+    }
+    
+}
+
+
+
 VecinoModel.insertVecino =(vecino, callback)=>{
 
     if(conexion){
