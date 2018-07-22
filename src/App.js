@@ -24,6 +24,7 @@ require('./Routes/EventosRoutes')(app);
 require('./Routes/AportesRoutes')(app);
 require('./Routes/CuotasRoutes')(app);
 require('./Routes/PagosRoutes')(app);
+require('./Routes/TipoAportesRoutes')(app);
 
 //statics files
 app.listen(app.get('port'), () =>{

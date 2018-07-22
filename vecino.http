@@ -1,7 +1,15 @@
-GET http://localhost:3000/aportes  http/1.1
+GET http://localhost:3000/tipoaportes  http/1.1
 ###
 GET http://localhost:3000/Vecinos/Email/juan  http/1.1
 ###
+POST  http://localhost:3000/tipoaportes http/1.1
+content-type: application/json
+
+{   "IdTipoAporte":1,
+    "Nombre": "Comida",
+ 
+}
+
 POST  http://localhost:3000/aportes http/1.1
 content-type: application/json
 
