@@ -1,6 +1,6 @@
-GET http://localhost:3000/aportes  http/1.1
+GET http://localhost:3000/vecinos  http/1.1
 ###
-GET http://localhost:3000/Vecinos/Email/juan  http/1.1
+GET http://localhost:3000/Vecinos/consulta/an  http/1.1
 ###
 POST  http://localhost:3000/aportes http/1.1
 content-type: application/json
@@ -9,5 +9,3 @@ content-type: application/json
     "Nombre": "Juan",
     "Nota":"Nada que decir"
 }
-
-
