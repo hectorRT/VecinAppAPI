@@ -1,7 +1,19 @@
+<<<<<<< HEAD
 GET http://localhost:3000/vecinos  http/1.1
+=======
+GET http://localhost:3000/tipoaportes  http/1.1
+>>>>>>> cc60fa77e04dee0f293c3cb6d5f3f0aca92194ed
 ###
 GET http://localhost:3000/Vecinos/consulta/an  http/1.1
 ###
+POST  http://localhost:3000/tipoaportes http/1.1
+content-type: application/json
+
+{   "IdTipoAporte":1,
+    "Nombre": "Comida",
+ 
+}
+
 POST  http://localhost:3000/aportes http/1.1
 content-type: application/json
 
