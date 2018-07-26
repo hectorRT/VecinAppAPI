@@ -98,15 +98,15 @@ CREATE TABLE IF NOT EXISTS Solicitudes(
 
 CREATE TABLE IF NOT EXISTS Vecindario(
     IdVecindario INT PRIMARY KEY AUTO_INCREMENT,
-    idFondo INT,
-    Nombre VARCHAR(50),
-    imagenLogo TEXT,
+    IdFondo INT,
+    nombre VARCHAR(50),
+    magenLogo TEXT,
     ciudad VARCHAR(50),
     sector VARCHAR(50),
     direccionLocal(50),
     provincia VARCHAR(50),
     montoAporteMensual INT,
-    FechaCreacion DATETIME,
+    fechaCreacion DATETIME,
 
 );
 
