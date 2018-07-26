@@ -33,7 +33,7 @@ EventosModel.getEvento = (id, callback) => {
 EventosModel.getEventosVecindario = (idVecindario, callback) => {
 
     if (connection) {
-        connection.query('SELECT * FROM Eventos WHERE IdVecindario = ?', idVecindario, (err, rows) => {
+        connection.query('SELECT * FROM Eventos WHERE IdVecindario = ? AND HoraInicio >= NOW()', idVecindario, (err, rows) => {
             if (err) {
                 callback(err, null);
             } else {
