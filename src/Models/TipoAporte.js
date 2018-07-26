@@ -6,7 +6,7 @@ const connection = DbConnection();
 
 AportesModel.getAporte = (callback) => {
     if(connection){
-        connection.query('SELECT * FROM tipoaportes ORDER BY Nombre ',
+        connection.query('SELECT * FROM tipoAportes ORDER BY Nombre ',
     (err, rows) => {
         if(err)
         {
@@ -20,7 +20,7 @@ AportesModel.getAporte = (callback) => {
 
 AportesModel.getAportes = (IdTipoAporte,callback) => {
     if(connection){
-        connection.query('SELECT * FROM tipoaportes WHERE IdTipoAporte = ?', IdTipoAporte,
+        connection.query('SELECT * FROM tipoAportes WHERE IdTipoAporte = ?', IdTipoAporte,
     (err, rows) => {
         if(err)
         {
@@ -34,7 +34,7 @@ AportesModel.getAportes = (IdTipoAporte,callback) => {
 
 AportesModel.insertAporte = (aporte, callback) => {
     if(connection){
-        connection.query('INSERT INTO tipoaportes SET?', aporte,
+        connection.query('INSERT INTO tipoAportes SET?', aporte,
             (err, result) => {
                 console.log(err);
                 console.log(result);
@@ -52,11 +52,9 @@ AportesModel.insertAporte = (aporte, callback) => {
 AportesModel.updateAporte = (AportesData, callback) => {
     if (connection) {
       const sql = `
-        UPDATE Aportes SET
+        UPDATE tipoAportes SET
    
         Nombre = ${connection.escape(AportesData.Nombre)},
-        ModifyBy = ${connection.escape(AportesData.ModifyBy)},
-        DateModification = ${connection.escape(AportesData.DateModification)}
         WHERE id = ${userData.id}`;
   
       connection.query(sql, function (err, result) {
@@ -74,7 +72,7 @@ AportesModel.updateAporte = (AportesData, callback) => {
 AportesModel.deleteAporte = (id, callback) => {
 if (connection) {
     var sqlExists = `
-    SELECT * FROM tipoaportes WHERE IdTipoAporte = ${connection.escape(id)}
+    SELECT * FROM tipoAportes WHERE IdTipoAporte = ${connection.escape(id)}
     `;
 
     connection.query(sqlExists, (err, row) => {

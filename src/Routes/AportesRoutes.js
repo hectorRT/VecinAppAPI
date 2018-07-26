@@ -25,6 +25,7 @@ module.exports = function(app){
         console.log('ANt');
         var aporte = {
             IdAporte: null,
+            IdTipoAporte:req.body.IdTipoAporte,
             IdVecino: req.body.IdVecino,
             Nombre: req.body.Nombre,
             Nota: req.body.Nota,
@@ -54,6 +55,7 @@ module.exports = function(app){
     app.put('/aportes/:id', (req, res) => {
         const AportesData = {
             IdAporte: null,
+            IdTipoAporte:re.body.IdTipoAporte,
             IdVecino: req.body.IdVecino,
             Nombre: req.body.Nombre,
             Nota: req.body.Nota,

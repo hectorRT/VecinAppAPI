@@ -1,7 +1,7 @@
 const aportes = require('../Models/TipoAporte');
 
 module.exports = function(app){
-    app.get('/tipoaportes', (req,res) => {
+    app.get('/tipoAportes', (req,res) => {
         aportes.getAporte((err,data) => {
             if(err){
                 res.status(500).json(err);
@@ -11,7 +11,7 @@ module.exports = function(app){
         });
     });
 
-    app.get('/tipoaportes/:id', (req,res) => {
+    app.get('/tipoAportes/:id', (req,res) => {
         aportes.getAportes(req.params.id,(err,data) => {
             if(err){
                 res.status(500).json(err);
@@ -21,15 +21,11 @@ module.exports = function(app){
         });
     });
 
-    app.post('/tipoaportes', (req, res) => {
+    app.post('/tipoAportes', (req, res) => {
         console.log('ANt');
         var aporte = {
             IdTipoAporte: null,
-           
             Nombre: req.body.Nombre,
-         
-            ModifyBy:req.body.ModifyBy,
-            DateModification:req.body.DateModification
         };
         console.log('ANt');
         aportes.insertAporte(aporte, (err, data) => {
@@ -50,13 +46,10 @@ module.exports = function(app){
         })
     });
 
-    app.put('/tipoaportes/:id', (req, res) => {
+    app.put('/tipoAportes/:id', (req, res) => {
         const AportesData = {
             IdTipoAporte: null,
-           
             Nombre: req.body.Nombre,
-            ModifiBy:req.body.ModifiBy,
-            DateModification:req.body.DateModification
         };
 
         aportes.updateAporte(AportesData, function (err, data) {
@@ -74,7 +67,7 @@ module.exports = function(app){
         });
     });
 
-    app.delete('/tipoaportes/:id', (req, res) => {
+    app.delete('/tipAportes/:id', (req, res) => {
         var id = req.params.id;
         aportes.deleteAporte(id, (err, data) =>  {
             if (data && (data.msg === 'deleted' || data.msg == 'not Exists')) {

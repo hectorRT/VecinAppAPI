@@ -68,11 +68,9 @@ CREATE TABLE IF NOT EXISTS Aportes(
 
 
 
-CREATE TABLE IF NOT EXISTS tipoaportes(
+CREATE TABLE IF NOT EXISTS tipoAportes(
     IdTipoAporte INT PRIMARY KEY AUTO_INCREMENT,
-    Nombre VARCHAR(50),
-    ModifyBy INT default 0,
-    DateModification datetime default now(),
+    Nombre VARCHAR(50)
     );
 
 
@@ -117,11 +115,19 @@ CREATE TABLE Cargos (
     IdCargo INT PRIMARY KEY AUTO_INCREMENT,
     nombre varchar(25)
 );
+INSERT INTO Cargos(nombre) VALUES('Presidente');
+INSERT INTO Cargos(nombre) VALUES('Secretaria');
+INSERT INTO Cargos(nombre) VALUES('Tesorero');
+INSERT INTO Cargos(nombre) VALUES('Integrante');
 
 CREATE TABLE FrecuenciaPagoCuotas(
     Idfrecuencia INT PRIMARY KEY AUTO_INCREMENT,
     frecuencia varchar(25)
 );
+
+INSERT INTO FrecuenciaPagoCuotas(frecuencia) VALUES('Mensual');
+INSERT INTO FrecuenciaPagoCuotas(frecuencia) VALUES('Quincenal');
+INSERT INTO FrecuenciaPagoCuotas(frecuencia) VALUES('Semanal');
 
 CREATE TABLE IF NOT EXISTS Cuota(
     IdCuota INT PRIMARY KEY AUTO_INCREMENT,
