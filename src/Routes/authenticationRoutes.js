@@ -8,7 +8,7 @@ module.exports = function(app){
         Solicitud.seleccionarId(solicitud.params.id, respuesta);
     })
     app.get('/authentication/:email/', function(solicitud, respuesta){
-        Solicitud.seleccionarId(solicitud.params.Email, respuesta);
+        Solicitud.authentication(solicitud.params.Email, respuesta);
     })
     app.post('/authentication/', function(solicitud, respuesta){
         Solicitud.insertar(solicitud.body, respuesta);
