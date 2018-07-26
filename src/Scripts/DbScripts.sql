@@ -66,6 +66,16 @@ CREATE TABLE IF NOT EXISTS Aportes(
 
 
 
+
+CREATE TABLE IF NOT EXISTS tipoaportes(
+    IdTipoAporte INT PRIMARY KEY AUTO_INCREMENT,
+    Nombre VARCHAR(50),
+    ModifyBy INT default 0,
+    DateModification datetime default now(),
+    );
+
+
+
 CREATE TABLE IF NOT EXISTS Vecinos(
     IdVecino INT PRIMARY KEY AUTO_INCREMENT,
     IdVecindario INT NOT NULL,
