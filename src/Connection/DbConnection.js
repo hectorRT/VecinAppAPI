@@ -4,7 +4,7 @@ module.exports = () => {
     return mysql.createConnection({
         host: 'localhost',
         user: 'root', //root
-        password: '',
+        password: '1234',
         database: 'vecinappdb',
         
     });
