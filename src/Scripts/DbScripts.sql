@@ -106,7 +106,6 @@ CREATE TABLE IF NOT EXISTS Aportes(
     Descripcion VARCHAR(100)
 );
 
-<<<<<<< HEAD
 CREATE TABLE IF NOT EXISTS Vecindario(
     IdVecindario INT PRIMARY KEY AUTO_INCREMENT,
     IdFondo INT,
@@ -122,9 +121,6 @@ CREATE TABLE IF NOT EXISTS Vecindario(
 );
 
 CREATE TABLE Cargos (
-=======
-CREATE TABLE IF NOT EXISTS Cargos (
->>>>>>> 9ffde2d7823f877b6a43bd62ee35c3ac1d8dfc86
 
     IdCargo INT PRIMARY KEY AUTO_INCREMENT,
     nombre varchar(25)

@@ -45,7 +45,7 @@ SuplidorModel.getSuplidor=(suplidor,callback)=>{
 SuplidorModel.insertSuplidor =(suplidor, callback)=>{
 
     if(conexion){
-        conexion.query("INSERT INTO Suplidor SET?",suplidor,
+        conexion.query("INSERT INTO Suplidores SET?",suplidor,
             (err,result)=>{
 
                 if(err)

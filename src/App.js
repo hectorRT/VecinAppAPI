@@ -25,6 +25,7 @@ require('./Routes/AportesRoutes')(app);
 require('./Routes/CuotasRoutes')(app);
 require('./Routes/PagosRoutes')(app);
 require('./Routes/TipoAportesRoutes')(app);
+require("./Routes/SuplidorRoute")(app);
 require('./Routes/authenticationRoutes')(app);
 
 //statics files
