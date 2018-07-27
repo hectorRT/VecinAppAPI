@@ -48,8 +48,7 @@ module.exports = function(app){
             IdVecino: req.body.IdVecino,
             IdSuplidor:req.body.IdSuplidor,
             Descripcion: req.body.Descripcion,
-            Monto: req.body.Monto,
-            Fecha: req.body.Fecha
+            Monto: req.body.Monto
            
         };
 

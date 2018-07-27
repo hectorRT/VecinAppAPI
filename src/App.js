@@ -17,6 +17,7 @@ app.use(bodyParser.json());
 require('./Routes/DiscusionesRoutes')(app);
 require('./Routes/DiscusionesComentariosRoutes')(app);
 require('./Routes/VecinoRoutes')(app);
+require('./Routes/VecindarioRoute')(app);
 require('./Routes/SolicitudesRoutes')(app);
 require('./Routes/CargoRoutes')(app);
 require('./Routes/FrecuenciaRoutes')(app);
