@@ -1,14 +1,13 @@
-GET http://localhost:3000/suplidor http/1.1
+GET http://localhost:3000/gasto http/1.1
 ###
 GET http://localhost:3000/vecindario/1  http/1.1
 ###
-POST  http://localhost:3000/vecindario http/1.1
+POST  http://localhost:3000/gasto http/1.1
 content-type: application/json
 
-{            "Nombre":"Cenovi",
-            "Telefono":"8095559987",
-            "Direccion":"Sfm",
-            "Representante":"Presinte Ligth",
-            "TelRepresentante":"8291234567"   
+{           "IdVecino":1,
+            "IdSuplidor":1,
+            "Descripcion":"Pago de luz",
+           "Monto":"20000"
 }
 

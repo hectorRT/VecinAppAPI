@@ -113,10 +113,10 @@ CREATE TABLE IF NOT EXISTS Vecindario(
     magenLogo TEXT,
     ciudad VARCHAR(50),
     sector VARCHAR(50),
-    direccionLocal(50),
+    direccionLocal VARCHAR(50),
     provincia VARCHAR(50),
     montoAporteMensual INT,
-    fechaCreacion DATETIME,
+    fechaCreacion DATETIME
 
 );
 
@@ -150,3 +150,14 @@ CREATE TABLE IF NOT EXISTS SUPLIDORES(
     Representante VARCHAR(100),
     TelRepresentante VARCHAR(20)
 );
+
+CREATE TABLE IF NOT EXISTS Gastos(
+IdGasto INT PRIMARY KEY AUTO_INCREMENT,
+IdVecino INT,
+IdSuplidor INT,
+Descripcion VARCHAR(100),
+Monto INT,
+Fecha DATETIME default now()
+
+);
+
