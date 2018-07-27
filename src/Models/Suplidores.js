@@ -21,7 +21,6 @@ SuplidorModel.getSuplidores=(callback)=>{
 
 };
 
-
 SuplidorModel.getSuplidor=(suplidor,callback)=>{
 
     if(conexion)
