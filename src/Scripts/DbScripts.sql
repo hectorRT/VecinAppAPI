@@ -153,4 +153,4 @@ CREATE TABLE IF NOT EXISTS SUPLIDORES(
     Direccion VARCHAR(250),
     Representante VARCHAR(100),
     TelRepresentante VARCHAR(20)
-		);
+);
