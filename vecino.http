@@ -1,18 +1,13 @@
-GET http://localhost:3000/vecindario http/1.1
+GET http://localhost:3000/gasto http/1.1
 ###
 GET http://localhost:3000/vecindario/1  http/1.1
 ###
-POST  http://localhost:3000/vecindario http/1.1
+POST  http://localhost:3000/gasto http/1.1
 content-type: application/json
 
-{            "IdFondo":1,
-            "nombre":"Cenovi",
-            "magenLogo":"http/google.com",
-            "ciudad": "sfm",
-            "sector":"capacito",
-            "direccionLocal":"Club Anacaona",
-            "provincia": "Duarte",
-            "montoAporteMensual": 150,
-            "fechaCreacion": "2018-07-15 19:00:00"
+{           "IdVecino":1,
+            "IdSuplidor":1,
+            "Descripcion":"Pago de luz",
+           "Monto":"20000"
 }
 

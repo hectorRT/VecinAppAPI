@@ -1,19 +1,16 @@
 CREATE DATABASE VecinAppDb;
-
 USE VecinAppDb;
 
 CREATE TABLE IF NOT EXISTS Vecindario(
     IdVecindario INT PRIMARY KEY AUTO_INCREMENT,
-    idFondo INT,
+    Fondo INT,
     Nombre VARCHAR(50),
-    imagenLogo TEXT,
     ciudad VARCHAR(50),
     sector VARCHAR(50),
     direccionLocal varchar(50),
     provincia VARCHAR(50),
     montoAporteMensual INT,
-    FechaCreacion DATETIME
-
+    FechaCreacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE IF NOT EXISTS Cuota(
@@ -76,9 +73,9 @@ CREATE TABLE IF NOT EXISTS tipoAportes(
 
 CREATE TABLE IF NOT EXISTS Vecinos(
     IdVecino INT PRIMARY KEY AUTO_INCREMENT,
-    IdVecindario INT NOT NULL,
-    IdCargo INT NOT Null,   
-    Idfrecuencia Int NOT Null,
+    IdVecindario INT,
+    IdCargo INT,   
+    Idfrecuencia Int,
     Nombres VARCHAR(50),
     Apellidos VARCHAR(75),
     Cedula VARCHAR(15),
@@ -87,6 +84,7 @@ CREATE TABLE IF NOT EXISTS Vecinos(
     Clave varchar(25),
     token varchar(255);
 );
+
 
 CREATE TABLE IF NOT EXISTS Aportes(
     IdAporte INT PRIMARY KEY AUTO_INCREMENT,
@@ -100,41 +98,33 @@ CREATE TABLE IF NOT EXISTS Aportes(
     FOREIGN KEY (IdVecino) REFERENCES Vecinos(IdVecino)
     );
 		
-		CREATE TABLE IF NOT EXISTS Solicitudes(
+CREATE TABLE IF NOT EXISTS Solicitudes(
     Id INT PRIMARY KEY AUTO_INCREMENT,
     Fecha VARCHAR(10),
     Tema VARCHAR(25),
     Descripcion VARCHAR(100)
 );
 
-<<<<<<< HEAD
-CREATE TABLE IF NOT EXISTS Vecindario(
-    IdVecindario INT PRIMARY KEY AUTO_INCREMENT,
-    IdFondo INT,
-    nombre VARCHAR(50),
-    magenLogo TEXT,
-    ciudad VARCHAR(50),
-    sector VARCHAR(50),
-    direccionLocal(50),
-    provincia VARCHAR(50),
-    montoAporteMensual INT,
-    fechaCreacion DATETIME,
 
-);
-
-CREATE TABLE Cargos (
-=======
 CREATE TABLE IF NOT EXISTS Cargos (
->>>>>>> 9ffde2d7823f877b6a43bd62ee35c3ac1d8dfc86
 
     IdCargo INT PRIMARY KEY AUTO_INCREMENT,
     nombre varchar(25)
 );
 
+insert into cargos(nombre) values('Presidente');
+insert into cargos(nombre) values('Secretario');
+insert into cargos(nombre) values('Tesorero');
+insert into cargos(nombre) values('Integrante');
+
 CREATE TABLE IF NOT EXISTS FrecuenciaPagoCuotas(
-    Idfrecuencia INT PRIMARY KEY AUTO_INCREMENT,
+    IdFrecuencia INT PRIMARY KEY AUTO_INCREMENT,
     frecuencia varchar(25)
 );
+
+insert into FrecuenciaPagoCuotas(frecuencia) values('Mensual');
+insert into FrecuenciaPagoCuotas(frecuencia) values('Quincenal');
+insert into FrecuenciaPagoCuotas(frecuencia) values('Semanal');
 
 CREATE TABLE IF NOT EXISTS PagoCuota(
     IdPago INT PRIMARY KEY AUTO_INCREMENT,
@@ -154,4 +144,15 @@ CREATE TABLE IF NOT EXISTS SUPLIDORES(
     Direccion VARCHAR(250),
     Representante VARCHAR(100),
     TelRepresentante VARCHAR(20)
-		);
+);
+
+CREATE TABLE IF NOT EXISTS Gastos(
+IdGasto INT PRIMARY KEY AUTO_INCREMENT,
+IdVecino INT,
+IdSuplidor INT,
+Descripcion VARCHAR(100),
+Monto INT,
+Fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
+);
+

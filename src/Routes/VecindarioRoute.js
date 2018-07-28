@@ -43,14 +43,13 @@ module.exports = function(app){
 
         var vecindarioData ={
             IdVecindario: null,
-            IdFondo: req.body.IdFondo,
+            Fondo: req.body.Fondo,
             nombre: req.body.nombre,
             ciudad: req.body.ciudad,
             sector: req.body.sector,
             direccionLocal: req.body.direccionLocal,
             provincia: req.body.provincia,
-            montoAporteMensual: req.body.montoAporteMensual,
-            fechaCreacion: req.body.fechaCreacion
+            montoAporteMensual: req.body.montoAporteMensual
         };
 
         vecindario.insertVecindario(vecindarioData,(err,data)=>{

@@ -70,7 +70,6 @@ VecindarioModel.updateVecindario=(vecindario,callback)=>{
        UPDATE Vecindario SET
        idFondo = ${conexion.escape(vecindario.idFondo)},
        nombre = ${conexion.escape(vecindario.nombre)},
-       magenLogo = ${conexion.escape(vecindario.magenLogo)},
        ciudad = ${conexion.escape(vecindario.ciudad)},
        sector = ${conexion.escape(vecindario.sector)},
        direccionLocal = ${conexion.escape(vecino.direccionLocal)},

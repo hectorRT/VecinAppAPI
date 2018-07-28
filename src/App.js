@@ -17,6 +17,7 @@ app.use(bodyParser.json());
 require('./Routes/DiscusionesRoutes')(app);
 require('./Routes/DiscusionesComentariosRoutes')(app);
 require('./Routes/VecinoRoutes')(app);
+require('./Routes/VecindarioRoute')(app);
 require('./Routes/SolicitudesRoutes')(app);
 require('./Routes/CargoRoutes')(app);
 require('./Routes/FrecuenciaRoutes')(app);
@@ -25,6 +26,8 @@ require('./Routes/AportesRoutes')(app);
 require('./Routes/CuotasRoutes')(app);
 require('./Routes/PagosRoutes')(app);
 require('./Routes/TipoAportesRoutes')(app);
+require("./Routes/SuplidorRoute")(app);
+require('./Routes/GAstoRoute')(app);
 require('./Routes/authenticationRoutes')(app);
 
 //statics files
