@@ -1,4 +1,4 @@
-CREATE DATABASE VecinAppDb;
+CREATE DATABASE IF NOT EXISTS VecinAppDb;
 USE VecinAppDb;
 
 CREATE TABLE IF NOT EXISTS Vecindario(
@@ -29,6 +29,9 @@ CREATE TABLE IF NOT EXISTS EstadosDiscusiones(
     IdEstado INT PRIMARY KEY AUTO_INCREMENT,
     Descripcion VARCHAR (100) NOT NULL
 );
+INSERT INTO EstadosDiscusiones(Descripcion) values('En proceso');
+INSERT INTO EstadosDiscusiones(Descripcion) values('En espera');
+INSERT INTO EstadosDiscusiones(Descripcion) values('Concluida');
 
 CREATE TABLE IF NOT EXISTS Discusiones(
 
@@ -82,7 +85,7 @@ CREATE TABLE IF NOT EXISTS Vecinos(
     Direccion VARCHAR(50),
     Email VARCHAR(75),
     Clave varchar(25),
-    token varchar(255);
+    token varchar(255)
 );
 
 
