@@ -1,5 +1,7 @@
 const DbConnection = require('../Connection/DbConnection');
 const conexion = DbConnection();
+var jwt = require('jsonwebtoken');
+var config = require('../config');
 function MetodosDB() {
 
     this.seleccionar = function (respuesta) {
@@ -8,10 +10,20 @@ function MetodosDB() {
                 respuesta.send({ estado: 'Error' })
             } else {
                 respuesta.send(resultado);
+
             }
         })
     }
-
+    this.Obtenerdatos = function (token, respuesta) {
+        conexion.query('select * from vecinos where token=?', token, function (error, resultado) {
+            if (error) {
+                respuesta.send({ estado: 'error' });
+            } else {
+                console.log(resultado);
+                respuesta.send(resultado);
+            }
+        })
+    }
     this.seleccionarId = function (id, respuesta) {
         conexion.query('select * from vecinos where IdVecino=?', id, function (error, resultado) {
             if (error) {
@@ -21,17 +33,17 @@ function MetodosDB() {
             }
         })
     }
-    this.seleccionarNombre = function (nombre, respuesta) {
-        conexion.query('select * from vecinos where nombre=?', nombre, function (error, resultado) {
+    this.actualizar = function (datos, respuesta) {
+        conexion.query('update vecinos set ? where IdVecino = ?', [datos, datos.IdVecino], function (error, resultado) {
             if (error) {
-                respuesta.send({ estado: 'error' });
+                respuesta.send({ estado: 'Error' });
             } else {
-                respuesta.send(resultado);
+                respuesta.send({ estado: 'Ok' });   
             }
         })
     }
     this.authentication = function (email, respuesta) {
-        conexion.query('select * from vecinos where Email=?', email, function (error, resultado) {
+        conexion.query('select * from vecinos where email=?', email, function (error, resultado) {
             if (error) {
                 respuesta.send({ estado: 'error' });
             } else {
@@ -39,40 +51,14 @@ function MetodosDB() {
             }
         })
     }
-    this.insertar = function (datos, respuesta) {
-        conexion.query('insert into vecinos set ?', datos, function (error, resultado) {
-            if (error) {
-                respuesta.send({ estado: 'Error' });
-            } else {
-                respuesta.send({ estado: 'Ok' });
-            }
-        })
-    }
-    this.actualizar = function (datos, respuesta) {
-        conexion.query('update vecinos set ? where IdVecino = ?', [datos, datos.id], function (error, resultado) {
-            if (error) {
-                respuesta.send({ estado: 'Error' });
-            } else {
-                respuesta.send({ estado: 'Ok' });
-            }
-        })
-    }
-    this.delete = function (id, respuesta) {
-        conexion.query('select * from vecinos where IdVecino=?', id, function (error, result) {
-            console.log(result);
-            if (result) {
-                conexion.query('delete from vecinos where id = ?', id, function (error, resultado) {
-                    if (error) {
-                        respuesta.send({ estado: 'Error' });
-                    } else {
-                        respuesta.send({ estado: 'Ok' });
-                    }
-                });
-            }
-            else {
-                respuesta.send({ estado: "No Existe" });
-            }
+    this.GetToken = function (email, respuesta) {
+
+        var token = jwt.sign({email:email}, config.secret, {
+            expiresIn: 100000// expires in 24 hours
         });
+        let data = { token: token}
+        respuesta.send(data);
     }
+
 }
 module.exports = new MetodosDB();

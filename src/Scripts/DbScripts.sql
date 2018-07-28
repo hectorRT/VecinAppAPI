@@ -84,7 +84,8 @@ CREATE TABLE IF NOT EXISTS Vecinos(
     Cedula VARCHAR(15),
     Direccion VARCHAR(50),
     Email VARCHAR(75),
-    Clave varchar(25)
+    Clave varchar(25),
+    token varchar(255);
 );
 
 CREATE TABLE IF NOT EXISTS Aportes(
